@@ -57,8 +57,9 @@ source "$OSH"/oh-my-bash.sh
 # alias ohmybash="mate ~/.oh-my-bash"
 
 
-# GOG games
-alias moonlighter="~/GOG_Games/Moonlighter/start.sh"
+# Games
+alias moonlighter="~/Downloads/0000/build/GOG_Games/Moonlighter/start.sh"
+alias eww="~/Downloads/0000/build/apps/pc_coisas/eww/target/release/eww"
 
 extract () {
   if [ -f $1 ] ; then
@@ -92,7 +93,11 @@ reload_waybar (){
 
 help (){
 	nvim /home/matheus/.config/.help
-}	
+}
+
+server_admin (){
+	ssh userland@192.168.18.171 -p 2223
+}
 
 fastfetch
 
