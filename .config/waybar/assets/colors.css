@@ -1,0 +1,18 @@
+@define-color foreground #dbe0f5; /* Azul muito claro - cor dos destaques no cabelo e olhos */
+@define-color background #1a1a23; /* Cinza escuro azulado - fundo predominante */
+@define-color color0     #1a1a23; /* Igual ao background */
+@define-color color1     #f27b99; /* Rosa chiclete neon - tons do grafite */
+@define-color color2     #90e0c0; /* Verde água claro - cabelo da Miku */
+@define-color color3     #fce3a6; /* Amarelo pastel quente - respingos e luz */
+@define-color color4     #77bdfa; /* Azul celeste - olhos da Miku e fundo do mural */
+@define-color color5     #e5a8d9; /* Rosa lavanda claro - parte do grafite */
+@define-color color6     #80e8dc; /* Ciano pastel - detalhes do fundo e cabelo */
+@define-color color7     #c1c7de; /* Azul acinzentado claro - brilho e peças metálicas */
+@define-color color8     #5a5d73; /* Cinza arroxeado escuro - sombras no cenário */
+@define-color color9     #f27b99; /* Repetido para manter compatibilidade */
+@define-color color10    #90e0c0; /* Repetido - verde água */
+@define-color color11    #fce3a6; /* Repetido - amarelo pastel */
+@define-color color12    #77bdfa; /* Repetido - azul celeste */
+@define-color color13    #e5a8d9; /* Repetido - rosa lavanda */
+@define-color color14    #80e8dc; /* Repetido - ciano pastel */
+@define-color color15    #aab0cc; /* Cinza azulado claro - brilho do piso e peças técnicas */

@@ -1,66 +1,34 @@
-// -*- mode: json -*-
-
 {
+//  ===============================================
 	"layer": "top",
 	"position": "top",
+	"modules-left": ["clock"],
+	"modules-center": ["hyprland/workspaces"],
+	"modules-right": [ "pulseaudio", "bluetooth","network","battery"],
 
-	"modules-left": [
-		"hyprland/workspaces",
-		"custom/right-arrow-dark"
-	],
-	"modules-center": [
-		"custom/left-arrow-dark",
-		"clock#1",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
-		"clock#2",
-		"custom/right-arrow-dark",
-		"custom/right-arrow-light",
-		"clock#3",
-		"custom/right-arrow-dark"
-	],
-	"modules-right": [
-		"custom/left-arrow-dark",
-		"pulseaudio",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
-		"memory",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
-		"cpu",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
-		"network",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
-		"battery",
-		"custom/left-arrow-light",
-		"custom/left-arrow-dark",
-		"tray"
-	],
 
-	"custom/left-arrow-dark": {
-		"format": "",
-		"tooltip": false
-	},
-	"custom/left-arrow-light": {
-		"format": "",
-		"tooltip": false
-	},
-	"custom/right-arrow-dark": {
-		"format": "",
-		"tooltip": false
-	},
-	"custom/right-arrow-light": {
-		"format": "",
-		"tooltip": false
-	},
-
+//  ===============================================
+// 	"hyprland/workspaces": {
+//
+// 		"format": "{name}"
+// 	},
 	"hyprland/workspaces": {
 		"disable-scroll": true,
-		"format": "{name}"
+		"active-only": false,
+		"all-outputs": true,
+		"format": "{icon}",
+		"show-special": false,
+		// "persistent-workspaces": {
+		// 	"*": [ 1,2,3,4,5 ]
+		// },
+		"format-icons": {
+			"default": "",
+			"active": "󱓻",
+			"urgent": "󱓻",
+		},
 	},
 
+//  ===============================================
 	"clock#1": {
 		"format": "{:%a}",
 		"tooltip": false
@@ -75,9 +43,27 @@
 		"tooltip": false
 	},
 
+	"clock": {
+		"format": "{:%I:%M %p} ",
+		"interval": 1,
+		"tooltip-format": "<tt>{calendar}</tt>",
+		"calendar": {
+			"format": {
+				"today": "<span color='red'><b>{}</b></span>"
+			}
+		},
+		"actions": {
+			"on-click-right": "shift_down",
+			"on-click": "shift_up"
+		}
+	},
+
+
+//  ===============================================
+
 	"pulseaudio": {
-		"format": "{icon} {volume:2}%",
-		"format-bluetooth": "{icon}  {volume}% ",
+		"format": "{icon}",
+		// "format-bluetooth": "{icon} {volume}% ",
 		"format-muted": "MUTE",
 		"format-icons": {
 			"headphones": "",
@@ -87,49 +73,71 @@
 				""
 			]
 		},
+		"tooltip-format": "{volume:2}%",
 		"scroll-step": 5,
 		"on-click": "pamixer -t",
 		"on-click-right": "pavucontrol"
+
 	},
-	"memory": {
-		"interval": 5,
-		"format": "Mem {}%"
-	},
-	"cpu": {
-		"interval": 5,
-		"format": "CPU {usage:2}%"
-	},
-	"disk": {
-		"interval": 5,
-		"format": "Disk {percentage_used:2}%",
-		"path": "/"
-	},
+
+//  ===============================================
+
 	"battery": {
+		"interval":30,
 		"states": {
-			"good": 94,
-			"warning": 29,
-			"critical": 14
+			"good": 95,
+			"warning": 30,
+			"critical": 20
 		},
-		"format": "{icon} {capacity}%",
+		"format": "{icon}",
+		"format-charging": "{capacity}% 󰂄",
+		"format-plugged": "{capacity}% 󰂄 ",
+		"format-alt": "{capacity}% {icon}",
 		"format-icons": [
-			"",
-			"",
-			"",
-			"",
-			""
-		]
+			"󰁻",
+			"󰁼",
+			"󰁾",
+			"󰂀",
+			"󰂂",
+			"󰁹"
+		],
 	},
+
+//  ===============================================
+
+
 	"network": {
 		"family": "ipv6",
 		// "interface": "wlp2*", // (Optional) To force the use of this interface
-		"format-wifi": "<span color='#589df6'></span> <span color='gray'>{essid}</span>",
+		"format-wifi": "",
 		"format-ethernet": "{ifname}: {ipaddr}/{cidr} ",
 		"format-linked": "{ifname} (No IP) ",
 		"format-disconnected": "Disconnected ⚠",
-		"format-alt": "{ifname}: {ipaddr}/{cidr}",
+		"format-alt": " {essid}",
+		"tooltip-format": "{essid}",
 		"interval": 5
 	},
+
+
+//  ===============================================
+
 	"tray": {
-		"icon-size": 20
+		"icon-size": 14,
+		"spacing": 10
+	},
+
+//  ===============================================
+
+	"bluetooth": {
+		"format": "󰂯",
+		"format-off": "BT-off",
+		"format-disabled": "󰂲",
+		// "format-connected-battery": "{device_battery_percentage}% 󰂯",
+		// "format-alt": "{device_alias} 󰂯",
+		"tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+		"tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+		"tooltip-format-enumerate-connected": "{device_alias}\n{device_address}",
+		"tooltip-format-enumerate-connected-battery": "{device_alias}\n{device_address}\n{device_battery_percentage}%",
+		"on-click-right": "blueman-manager",
 	}
 }
