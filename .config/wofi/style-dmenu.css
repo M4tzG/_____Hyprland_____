@@ -1,0 +1,52 @@
+
+window {
+    margin: 0;
+    padding: 20px;
+    border-radius: 15px;
+    background-color: #2e3440;
+    border: 1px solid #4c566a;
+    box-shadow: 0 0 30px rgba(0,0,0,0.5);
+}
+
+#entry {
+margin: 5px;
+padding: 25px;
+border-radius: 10px;
+background-color: #434c5e;
+transition: all 0.2s ease;
+}
+
+#entry:selected {
+background: linear-gradient(145deg, #88c0d0, #81a1c1);
+transform: scale(1.02);
+box-shadow: 0 4px 15px rgba(136, 192, 208, 0.3);
+}
+
+#box {
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+gap: 15px;
+}
+
+#img {
+margin-right: 15px;
+font-family: "FiraCode Nerd Font";
+font-size: 28px;
+color: #eceff4;
+}
+
+#text {
+font-family: "Inter";
+font-size: 14px;
+font-weight: bold;
+color: #d8dee9;
+}
+
+#input {
+display: none; /* Esconde a barra de pesquisa */
+}
+
+#scroll {
+margin: 0;
+border: none;
+}

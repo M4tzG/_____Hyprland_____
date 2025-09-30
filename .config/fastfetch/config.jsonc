@@ -1,21 +1,19 @@
 {
     "logo": {
         "type": "kitty-direct",
-        "source": "/home/matheus/.config/hypr/themes/arch/logo/pngwing.com(2)(1).png",
-
+        "source": "/home/matheus/.config/fastfetch/pngs/Bleh.png",
+        "width": 50,
         "padding": {
             "top": 2,
             "right": 1,
             "bottom": 0,
             "left": 2
         }
-        
     },
     "display": {
         "separator": "  "
     },
     "modules": [
-
         {
             "type": "title",
             "key": "          "
@@ -32,17 +30,17 @@
         {
             "type": "os",
             "key": "    OS",
-            "keyColor": "red"
+            "keyColor": "#F78DBD"
         },
         {
             "type": "kernel",
             "key": "    Kernel",
-            "keyColor": "red"
+            "keyColor": "#F78DBD"
         },
         {
             "type": "packages",
             "key": "    Packages",
-            "keyColor": "red"
+            "keyColor": "#F78DBD"
         },
 
         "break",
@@ -50,18 +48,17 @@
         {
             "type": "wm",
             "key": "    WM",
-            "keyColor": "blue"
+            "keyColor": "#8C85B7"
         },
         {
             "type": "terminal",
             "key": "    Terminal",
-            "keyColor": "blue"
+            "keyColor": "#8C85B7"
         },
-
         {
             "type": "shell",
             "key": "    Shell",
-            "keyColor": "blue"
+            "keyColor": "#8C85B7"
         },
 
         "break",
@@ -69,30 +66,30 @@
         {
             "type": "display",
             "key": "    Display",
-            "keyColor": "green"
+            "keyColor": "#A66184"
         },
         {
             "type": "cpu",
-            "format": "{1}",
             "key": "    CPU",
-            "keyColor": "green"
+            "format": "{1}",
+            "keyColor": "#A66184"
         },
         {
             "type": "gpu",
-            "format": "{2}",
             "key": "    GPU",
-            "keyColor": "green"
+            "format": "{2}",
+            "keyColor": "#A66184"
         },
         {
             "type": "gpu",
-            "format": "{3}",
             "key": "    GPU Driver",
-            "keyColor": "green"
+            "format": "{3}",
+            "keyColor": "#A66184"
         },
         {
-             "type": "memory",
+            "type": "memory",
             "key": "    Memory",
-            "keyColor": "green"
+            "keyColor": "#A66184"
         },
 
         "break",
@@ -100,24 +97,23 @@
         {
             "type": "uptime",
             "key": "    Uptime ",
-            "keyColor": "yellow"
+            "keyColor": "#E6C4E6"
         },
         {
             "type": "Battery",
             "key": "    Battery ",
-            "keyColor": "yellow"
+            "keyColor": "#E6C4E6"
         },
         {
             "type": "custom",
             "format": "《·───────────────·》◈《·──────────────·》"
         },
-	{
+
+        {
             "type": "colors",
             "paddingLeft": 3,
             "symbol": "circle"
         },
         "break"
-
     ]
 }
-

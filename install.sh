@@ -16,7 +16,7 @@ sub_folder () {
     fi
 }
 
-# Função para mover e substituir arquivos
+# mover e substituir arquivo
 sub_file () {
     local origin=$1
     local dest=$2
