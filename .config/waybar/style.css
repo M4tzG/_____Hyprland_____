@@ -36,6 +36,8 @@ window#waybar .modules-left{
 tooltip {
 	background:@background;
 	color: @color7;
+	border-radius: 10px;
+	opacity: 0.9;
 }
 
 #clock:hover,#bluetooth:hover,#network:hover,#battery:hover, #pulseaudio:hover{
@@ -153,4 +155,12 @@ transition: all .3s ease;
 	transition: all .3s ease;
 	color:@color7;
 }
+/* =========================================== */
+/* separador */
+#custom-separator {
+color: @color7;
+}
 
+#custom-notification {
+color: @color7;
+}

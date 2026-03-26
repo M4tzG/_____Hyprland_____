@@ -59,7 +59,7 @@ source "$OSH"/oh-my-bash.sh
 
 # Games
 alias moonlighter="~/Downloads/0000/build/GOG_Games/Moonlighter/start.sh"
-alias eww="~/Downloads/0000/build/apps/pc_coisas/eww/target/release/eww"
+# alias eww="~/Downloads/0000/build/apps/pc_coisas/eww/target/release/eww"
 
 extract () {
   if [ -f $1 ] ; then
@@ -101,18 +101,26 @@ server_admin (){
 
 fastfetch
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/usr/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/usr/etc/profile.d/conda.sh" ]; then
-        . "/usr/etc/profile.d/conda.sh"
-    else
-        export PATH="/usr/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-# <<< conda initialize <<<
+# # >>> conda initialize >>>
+# # !! Contents within this block are managed by 'conda init' !!
+# __conda_setup="$('/home/matheus/miniconda3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# else
+#     if [ -f "/home/matheus/miniconda3/etc/profile.d/conda.sh" ]; then
+#         . "/home/matheus/miniconda3/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/home/matheus/miniconda3/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
+# # <<< conda initialize <<<
+#
 
+alias config='/usr/bin/git --git-dir=$HOME/.dotfiles/.git/ --work-tree=$HOME'
+alias start-conda='source /home/matheus/miniconda3/etc/profile.d/conda.sh && conda activate base'
+alias end-conda='conda deactivate'
+
+export NVM_DIR="$HOME/.config/nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
