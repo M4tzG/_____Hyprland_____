@@ -1,0 +1,28 @@
+#!/bin/bash
+
+FILE="$HOME/.cache/eww_launch.dashboard"
+CFG="$HOME/.config/eww/dashboard"
+EWW="$(which eww)"
+WIDGETS="profile system music uptime apps logout sleep reboot poweroff folders"
+
+## Inicia o daemon do eww globalmente se não estiver rodando
+if ! pgrep -x eww >/dev/null; then
+    ${EWW} daemon &
+    sleep 1
+fi
+
+run_eww() {
+    ${EWW} --config "$CFG" open-many $WIDGETS
+}
+
+close_eww() {
+    ${EWW} --config "$CFG" kill
+}
+
+if [[ ! -f "$FILE" ]]; then
+    touch "$FILE"
+    run_eww
+else
+    close_eww
+    rm -f "$FILE"
+fi

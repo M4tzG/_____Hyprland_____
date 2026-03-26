@@ -1,0 +1,105 @@
+#!/bin/bash
+
+PLAYER="playerctl"
+COVER="/tmp/.music_cover.jpg"
+
+## Status icon
+get_status() {
+	status=$($PLAYER status 2>/dev/null)
+
+	if [[ "$status" == "Playing" ]]; then
+		echo "󰏤"
+	else
+		echo "󰐊"
+	fi
+}
+
+## Song title
+get_song() {
+	song=$($PLAYER metadata title 2>/dev/null)
+
+	if [[ -z "$song" ]]; then
+		echo "Offline"
+	else
+		echo "$song"
+	fi
+}
+
+## Artist
+get_artist() {
+	artist=$($PLAYER metadata artist 2>/dev/null)
+
+	if [[ -z "$artist" ]]; then
+		echo "Offline"
+	else
+		echo "$artist"
+	fi
+}
+
+## Progress %
+get_time() {
+	position=$($PLAYER position 2>/dev/null)
+	length=$($PLAYER metadata mpris:length 2>/dev/null)
+
+	if [[ -z "$position" || -z "$length" ]]; then
+		echo "0"
+	else
+		length_sec=$(awk "BEGIN {print $length/1000000}")
+		percent=$(awk "BEGIN {print ($position/$length_sec)*100}")
+		printf "%.0f\n" "$percent"
+	fi
+}
+
+## Current time
+get_ctime() {
+	$PLAYER position 2>/dev/null | awk '{printf "%d:%02d", $1/60, $1%60}'
+}
+
+## Total time
+get_ttime() {
+	length=$($PLAYER metadata mpris:length 2>/dev/null)
+	length_sec=$(awk "BEGIN {print $length/1000000}")
+	printf "%d:%02d\n" $((length_sec/60)) $((length_sec%60))
+}
+
+## Cover
+get_cover() {
+	url=$($PLAYER metadata mpris:artUrl 2>/dev/null)
+
+	if [[ "$url" == file://* ]]; then
+		path="${url#file://}"
+		echo "$path"
+	elif [[ "$url" == http* ]]; then
+		curl -s "$url" -o "$COVER"
+		echo "$COVER"
+	else
+		echo "images/musicbg.png"
+	fi
+}
+
+## Controls
+toggle() {
+	$PLAYER play-pause
+}
+
+next() {
+	$PLAYER next
+}
+
+prev() {
+	$PLAYER previous
+}
+
+## Execute
+case "$1" in
+	--song) get_song ;;
+	--artist) get_artist ;;
+	--status) get_status ;;
+	--time) get_time ;;
+	--ctime) get_ctime ;;
+	--ttime) get_ttime ;;
+	--cover) get_cover ;;
+	--toggle) toggle ;;
+	--next) next ;;
+	--prev) prev ;;
+esac

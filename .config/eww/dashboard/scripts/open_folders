@@ -1,0 +1,32 @@
+#!/bin/bash
+
+## Open folders in ranger
+FILE="$HOME/.cache/eww_launch.dashboard"
+CFG="$HOME/.config/eww/dashboard"
+EWW=`which eww`
+WIDGETS="profile system uptime music apps logout sleep reboot poweroff folders"
+
+close_dash() {
+    ${EWW} --config "$CFG" kill
+    rm -f "$FILE"
+}
+
+if [[ "$1" == "--dl" ]]; then
+	close_dash && kitty ranger ~/Downloads &
+
+elif [[ "$1" == "--docs" ]]; then
+	close_dash && kitty ranger ~/Documentos &
+
+elif [[ "$1" == "--games" ]]; then
+	close_dash && kitty ranger ~/Games &
+
+elif [[ "$1" == "--pics" ]]; then
+	close_dash && kitty ranger ~/Imagens &
+
+elif [[ "$1" == "--cfg" ]]; then
+	close_dash && kitty ranger ~/.config &
+
+elif [[ "$1" == "--local" ]]; then
+	close_dash && kitty ranger ~/.local/share &
+
+fi
